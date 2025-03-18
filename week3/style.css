@@ -1,7 +1,58 @@
 h1 {
-  color: blueviolet;
+  color: lavender;
+  font-family: "Rock Salt", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3rem;
 }
 
 p {
-  color: black;
+  color: lightpink;
+}
+
+li {
+  color: lightblue;
+}
+
+body {
+  background-image: url(lookism.jpg);
+  background-position: center;
+  background-size: contain;
+  text-align: center;
+  color: white;
+  padding: 30px;
+}
+
+#right {
+  color: palevioletred;
+}
+
+.yuh {
+  text-align: center;
+}
+
+#baka {
+  font-family: Impact;
+  font-size: 100px;
+  color: thistle;
+  background-color: black;
+}
+
+#oh {
+  border-color: mistyrose;
+  border-width: 3px;
+  border-style: solid;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+section {
+  text-align: left;
+  border: 1px solid rgb(232, 112, 152);
+}
+
+.heading-border {
+  border: 3px dotted lightpink;
 }
