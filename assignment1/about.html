@@ -6,22 +6,24 @@
     <title>About - Interactive Media</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <!-- Header Section with Home and About on the Left -->
+  <!-- Preventing unecessary scrolling movement -->
+  <body class="bodystill">
+    <!-- Header section with home and about with navigation links to different parts of the website -->
     <header>
       <nav>
         <ul class="nav-left">
-          <li><a href="index.html" class="home-icon">🏠</a></li>
+          <li><a href="index.html" class="home-icon">Home</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
       </nav>
     </header>
 
-    <!-- About Section -->
+    <!-- The main information for the about page -->
     <section class="full-screen">
       <div class="container">
-        <h1>About This Project</h1>
-        <p>
+        <!-- The class fadein used for the animation -->
+        <h1 class="fadein">About This Project</h1>
+        <p class="fadein">
           This interactive web project was created as part of an Interactive
           Media Assignment. The task required us to select an interactive web
           project from a list in the course modules and provide short written
@@ -29,7 +31,7 @@
           with it. In this case I chose Min Jae Seo's simplistic and intuitive
           website design.
         </p>
-        <p>
+        <p class="fadein">
           My goal was to explore this style of design and create an experience
           that not only answers the questions assigned but somewhat replicates
           her website. All credit to her of course and this won't be properly
@@ -38,11 +40,9 @@
       </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer with basic details -->
     <footer>
       <p>Xander Chan | xandertchan@gmail.com</p>
     </footer>
-
-    <script src="script.js"></script>
   </body>
 </html>

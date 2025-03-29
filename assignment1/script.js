@@ -1,11 +1,35 @@
-// JavaScript for scroll effects or interactive features
-window.addEventListener("scroll", function () {
-  const sections = document.querySelectorAll("section");
-  const scrollPosition = window.scrollY;
+// When the page is scrolled
+window.onscroll = function () {
+  var upArrow = document.querySelector(".up-arrow");
 
-  sections.forEach(function (section) {
-    if (scrollPosition + window.innerHeight > section.offsetTop + 100) {
-      section.classList.add("visible");
-    }
+  // Show the arrow after scrolling down 200px
+  if (
+    document.body.scrollTop > 200 ||
+    document.documentElement.scrollTop > 200
+  ) {
+    upArrow.classList.add("visible");
+  } else {
+    upArrow.classList.remove("visible");
+  }
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+  const fadeElements = document.querySelectorAll(".fade-in");
+
+  const options = {
+    threshold: 0.5, // Trigger when 50% of the element is visible
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible"); // Add visible class when in viewport
+        observer.unobserve(entry.target); // Stop observing after the element is in view
+      }
+    });
+  }, options);
+
+  fadeElements.forEach((element) => {
+    observer.observe(element); // Observe each fade-in element
   });
 });
