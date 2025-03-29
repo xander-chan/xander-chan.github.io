@@ -1,8 +1,8 @@
-// When the page is scrolled
+// When the page is scrolled I want it to do something
 window.onscroll = function () {
   var upArrow = document.querySelector(".up-arrow");
 
-  // Show the arrow after scrolling down 200px
+  // Show the up arrow after scrolling down 200pixels
   if (
     document.body.scrollTop > 200 ||
     document.documentElement.scrollTop > 200
