@@ -17,19 +17,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const fadeElements = document.querySelectorAll(".fade-in");
 
   const options = {
-    threshold: 0.5, // Trigger when 50% of the element is visible
+    threshold: 0.5, // Starts the code when 50% of the element is visible
   };
 
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("visible"); // Add visible class when in viewport
-        observer.unobserve(entry.target); // Stop observing after the element is in view
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
       }
     });
   }, options);
 
   fadeElements.forEach((element) => {
-    observer.observe(element); // Observe each fade-in element
+    observer.observe(element);
   });
 });

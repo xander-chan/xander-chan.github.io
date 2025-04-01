@@ -50,7 +50,7 @@ nav ul li a {
   color: white;
 }
 
-/* Holds text and buttons in place */
+/* Holds text and buttons in place right in the middle */
 .container {
   max-width: 60%;
   text-align: center;
@@ -68,7 +68,7 @@ p {
   margin-bottom: 30px;
 }
 
-/* Button styling */
+/* Basic button styling */
 .btn {
   padding: 10px 20px;
   background-color: #fff;
@@ -83,7 +83,7 @@ p {
   background-color: #f4f4f4;
 }
 
-/* Footer styles */
+/* Footer font and position */
 footer {
   position: fixed;
   bottom: 10px;
@@ -108,7 +108,7 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* Centering content and adding spacing for readability */
+/* Centering content and adding spacing between each question for readability */
 .questions {
   text-align: center;
   align-items: center;
@@ -126,12 +126,12 @@ footer a:hover {
   list-style-position: inside;
 }
 
-/* Up arrow design and position */
+/* Up arrow design and positioned to the right side of the screen */
 .up-arrow {
   position: fixed;
-  bottom: 40px; /* Distance from the bottom */
-  right: 40px; /* Distance from the right */
-  font-size: 25px; /* Size of the arrow icon */
+  bottom: 40px;
+  right: 40px;
+  font-size: 25px;
   background-color: white;
   color: black;
   text-align: center;
@@ -163,17 +163,20 @@ footer a:hover {
   animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Made the initial fade-in state hidden  */
+/* Made the initial fade-in state hidden so that it has the ability to fade-in from nothing  */
 .fade-in {
   opacity: 0;
-  transform: translateY(3px); /* Adds a bit of movement */
+  transform: translateY(
+    3px
+  ); /* Adds a bit of movement up, not really noticeable though */
   transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-/* When element becomes visible in the viewport */
 .fade-in.visible {
   opacity: 1;
-  transform: translateY(0); /* Reset the translation to make the animation */
+  transform: translateY(
+    0
+  ); /* Reset the translation to make the animation of the text coming in */
   animation: fadeIn 1.5s forwards;
 }
 
@@ -188,6 +191,7 @@ footer a:hover {
   background-attachment: fixed; /* Makes the image stay in place */
 }
 
+/* Adjusting footer size, had to use an id to take priority over the classic body */
 #footer1 {
   font-size: 0.75rem;
 }
@@ -196,12 +200,13 @@ footer a:hover {
   color: lightyellow;
 }
 
+/* Background for the about page */
 #aboutbackground {
   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
     url("panda-about.png");
   background-size: cover;
 }
-
+/* Background for the home page */
 #homebackground {
   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
     url("panda-website.png");
