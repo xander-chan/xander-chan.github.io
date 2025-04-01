@@ -6,7 +6,7 @@ body {
   background-color: #000;
 }
 
-/* Keeping the page static */
+/* Keeping the page static on about and home page */
 .bodystill {
   overflow: hidden;
   margin: 0;
@@ -46,16 +46,13 @@ nav ul li a {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("panda-website.png");
-  background-size: cover;
   text-align: center;
   color: white;
 }
 
 /* Holds text and buttons in place */
 .container {
-  max-width: 80%;
+  max-width: 60%;
   text-align: center;
   padding-bottom: 10%;
   color: white;
@@ -93,7 +90,6 @@ footer {
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  font-size: 0.25rem;
 }
 
 footer .footer-content {
@@ -120,8 +116,8 @@ footer a:hover {
 }
 
 #answers1 {
-  padding-left: 200px;
-  padding-right: 200px;
+  padding-left: 300px;
+  padding-right: 300px;
   font-size: 15px;
   margin-bottom: 80px;
 }
@@ -183,4 +179,31 @@ footer a:hover {
 
 #headerspace {
   padding-bottom: 30px;
+}
+
+.iepage {
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url("panda-think.png");
+  background-size: contain;
+  background-attachment: fixed; /* Makes the image stay in place */
+}
+
+#footer1 {
+  font-size: 0.75rem;
+}
+
+#minjaeseo {
+  color: lightyellow;
+}
+
+#aboutbackground {
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url("panda-about.png");
+  background-size: cover;
+}
+
+#homebackground {
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url("panda-website.png");
+  background-size: cover;
 }
