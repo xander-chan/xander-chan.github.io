@@ -57,7 +57,7 @@ nav ul li a {
   padding-bottom: 10%;
   color: white;
 }
-
+/* Adjusting font sizes for headings and paragraphs */
 h1 {
   font-size: 3rem;
   margin-bottom: 20px;
@@ -108,7 +108,7 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* Centering content and adding spacing between each question for readability */
+/* Centering content and adding spacing (padding) between each question for readability */
 .questions {
   text-align: center;
   align-items: center;
@@ -139,7 +139,6 @@ footer a:hover {
   height: 40px;
   border-radius: 50%;
   line-height: 40px;
-  cursor: pointer;
   text-decoration: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: none;
@@ -149,6 +148,7 @@ footer a:hover {
   display: block;
 }
 
+/* Fadein animation keyframes */
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -196,6 +196,7 @@ footer a:hover {
   font-size: 0.75rem;
 }
 
+/* Making the minjaeseo.com yellow to indicate its a link */
 #minjaeseo {
   color: lightyellow;
 }
