@@ -26,7 +26,7 @@ body {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
-  overflow: scroll;
+  /* overflow: scroll;  */
 }
 
 #box1 {
