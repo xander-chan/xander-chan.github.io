@@ -9,68 +9,64 @@
       href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500&family=Patrick+Hand&family=Shadows+Into+Light&display=swap"
       rel="stylesheet"
     />
+    <script src="script.js" defer></script>
   </head>
   <body>
     <div class="container">
       <header>
         <h1>Serenitunes</h1>
-        <h2 id="song-title">Select a song</h2>
+        <h2 id="song-title">Cafe</h2>
       </header>
 
-      <div class="player">
-        <img id="cover" src="cafe.png" alt="Album Cover" />
-        <audio id="audio"></audio>
-        <div class="controls">
-          <button id="prev">⏮️</button>
-          <button id="play">▶️</button>
-          <button id="next">⏭️</button>
-          <button id="mute">🔊</button>
-          <input
-            type="range"
-            id="volume"
-            min="0"
-            max="1"
-            step="0.01"
-            value="1"
-          />
+      <div class="main-content">
+        <div class="player">
+          <img id="cover" src="cafe.png" alt="Album Cover" />
+          <audio id="audio"></audio>
+          <div class="controls">
+            <button id="prev">⏮️</button>
+            <button id="play">▶️</button>
+            <button id="next">⏭️</button>
+            <button id="mute">🔊</button>
+            <input
+              type="range"
+              id="volume"
+              min="0"
+              max="1"
+              step="0.01"
+              value="1"
+            />
+          </div>
+          <div class="progress-container">
+            <span id="current-time">0:00</span>
+            <input type="range" id="progress" min="0" max="100" value="0" />
+            <span id="duration">0:00</span>
+          </div>
         </div>
-        <div class="progress-container">
-          <span id="current-time">0:00</span>
-          <input type="range" id="progress" min="0" max="100" value="0" />
-          <span id="duration">0:00</span>
-        </div>
-      </div>
 
-      <div class="extra-controls">
-        <button id="shuffle">🔀 (Off)</button>
-        <button id="repeat">🔁 (Off)</button>
-      </div>
-
-      <div class="song-list-container">
-        <button id="song-list-toggle" class="toggle-button">
-          🔽 Song List
-        </button>
-        <div class="song-list">
-          <div class="song" data-index="0">
-            <img src="placeholder1.jpg" alt="Song 1" />
-            <p>Song One</p>
-          </div>
-          <div class="song" data-index="1">
-            <img src="placeholder2.jpg" alt="Song 2" />
-            <p>Song Two</p>
-          </div>
-          <div class="song" data-index="2">
-            <img src="placeholder3.jpg" alt="Song 3" />
-            <p>Song Three</p>
-          </div>
-          <div class="song" data-index="3">
-            <img src="placeholder4.jpg" alt="Song 4" />
-            <p>Song Four</p>
+        <div class="song-list-container">
+          <button id="song-list-toggle" class="toggle-button">
+            🔽 Song List
+          </button>
+          <div class="song-list">
+            <div class="song" data-index="0">
+              <img src="placeholder1.jpg" alt="Song 1" />
+              <p>Song One</p>
+            </div>
+            <div class="song" data-index="1">
+              <img src="placeholder2.jpg" alt="Song 2" />
+              <p>Song Two</p>
+            </div>
+            <div class="song" data-index="2">
+              <img src="placeholder3.jpg" alt="Song 3" />
+              <p>Song Three</p>
+            </div>
+            <div class="song" data-index="3">
+              <img src="placeholder4.jpg" alt="Song 4" />
+              <p>Song Four</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <script src="script.js"></script>
   </body>
 </html>

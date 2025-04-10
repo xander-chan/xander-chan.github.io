@@ -5,9 +5,9 @@ const songs = [
     cover: "cafe.png",
   },
   {
-    name: "Song Two",
-    src: "song2.mp3",
-    cover: "placeholder2.jpg",
+    name: "Forest",
+    src: "forest.wav",
+    cover: "forest.png",
   },
   {
     name: "Song Three",
