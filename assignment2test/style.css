@@ -7,8 +7,8 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding-top: 40px;
   box-sizing: border-box;
-  padding-top: 40px; /* Added to prevent header clipping */
 }
 
 .container {
@@ -36,7 +36,7 @@ header h1 {
 #song-title {
   font-family: "Shadows Into Light", cursive;
   font-size: 1.3rem;
-  margin: 5px 0 10px 0; /* Less space before player image */
+  margin: 5px 0 10px 0;
 }
 
 .player {
@@ -91,13 +91,12 @@ header h1 {
   margin: 0 10px;
 }
 
+/* THIS is the updated song list section */
 .song-list-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 160px;
+  right: 190px;
+  z-index: 10;
 }
 
 #song-list-toggle {
@@ -107,23 +106,37 @@ header h1 {
   padding: 10px;
   font-size: 1.2rem;
   cursor: pointer;
-  margin-bottom: 10px;
+  display: block;
+  width: 200px;
+  text-align: left;
+  border-radius: 10px;
 }
 
 .song-list {
   display: none;
+  margin-top: 10px;
+  background: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 200px;
   flex-direction: column;
-  width: 100%;
+}
+
+.song-list.active {
+  display: flex;
 }
 
 .song {
   background-color: #333;
-  border-radius: 10px;
   padding: 10px;
-  margin-bottom: 10px;
   display: flex;
   align-items: center;
   cursor: pointer;
+  border-bottom: 1px solid #444;
+}
+
+.song:last-child {
+  border-bottom: none;
 }
 
 .song img {
@@ -137,12 +150,4 @@ header h1 {
   font-family: "Shadows Into Light", cursive;
   font-size: 1.1rem;
   margin: 0;
-}
-
-.song-list-container.active .song-list {
-  display: flex;
-}
-
-.song-list-container.active #song-list-toggle {
-  content: "🔼 Song List";
 }

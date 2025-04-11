@@ -1,18 +1,18 @@
 const songs = [
   {
-    name: "Cafe",
+    name: "Haze",
     src: "cafe.wav",
     cover: "cafe.png",
   },
   {
-    name: "Forest",
+    name: "Ascension",
     src: "forest.wav",
     cover: "forest.png",
   },
   {
-    name: "Song Three",
-    src: "song3.mp3",
-    cover: "placeholder3.jpg",
+    name: "Fading",
+    src: "fade.wav",
+    cover: "fade.png",
   },
   {
     name: "Song Four",
@@ -119,3 +119,10 @@ songListToggle.addEventListener("click", () => {
 });
 
 loadSong(currentSong);
+
+const toggleBtn = document.getElementById("song-list-toggle");
+const songList = document.querySelector(".song-list");
+
+toggleBtn.addEventListener("click", () => {
+  songList.classList.toggle("active");
+});
