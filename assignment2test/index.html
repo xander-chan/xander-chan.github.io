@@ -12,25 +12,80 @@
     <script src="script.js" defer></script>
   </head>
   <body>
+    <!-- Main Container for the Page Content -->
     <div class="container">
+      <!-- Header Section for the Music Player -->
       <header>
+        <!-- Main Title of the Music Player -->
         <h1>Serenitunes</h1>
+
+        <!-- Song Title Displayed Under the Main Title -->
         <h2 id="song-title">Cafe</h2>
       </header>
 
+      <!-- Main Content Section of the Player -->
       <div class="main-content">
+        <!-- Music Player Section -->
         <div class="player">
+          <!-- Album Cover Image -->
           <img id="cover" src="cafe.png" alt="Album Cover" />
+
+          <!-- Audio Element for Playing Music -->
           <audio id="audio"></audio>
+
+          <!-- Controls Section for the Music Player -->
           <div class="controls">
-            <button id="replay">🔁</button>
-            <!-- Replay Button -->
-            <button id="prev">⏮️</button>
-            <button id="play">▶️</button>
-            <button id="next">⏭️</button>
-            <button id="shuffle">🔀</button>
-            <!-- Shuffle Button -->
-            <button id="mute">🔊</button>
+            <!-- Replay Button with Icon -->
+            <button id="replay">
+              <img
+                src="https://img.icons8.com/?size=100&id=91644&format=png&color=FFFFFF"
+                alt="Replay"
+                width="24"
+                height="24"
+              />
+            </button>
+
+            <!-- Previous Button with Icon -->
+            <button id="prev">
+              <img
+                src="https://img.icons8.com/?size=100&id=407&format=png&color=FFFFFF"
+                alt="Rewind"
+                width="24"
+                height="24"
+              />
+            </button>
+
+            <!-- Play Button with Icon -->
+            <button id="play">
+              <img
+                src="https://img.icons8.com/?size=100&id=398&format=png&color=FFFFFF"
+                alt="Play"
+                width="24"
+                height="24"
+              />
+            </button>
+
+            <!-- Next Button with Icon -->
+            <button id="next">
+              <img
+                src="https://img.icons8.com/?size=100&id=405&format=png&color=FFFFFF"
+                alt="Next"
+                width="24"
+                height="24"
+              />
+            </button>
+
+            <!-- Mute Button with Icon -->
+            <button id="mute">
+              <img
+                src="https://img.icons8.com/?size=100&id=LRLIxP2TYbTN&format=png&color=FFFFFF"
+                alt="Mute"
+                width="24"
+                height="24"
+              />
+            </button>
+
+            <!-- Volume Control Slider -->
             <input
               type="range"
               id="volume"
@@ -40,33 +95,58 @@
               value="1"
             />
           </div>
+
+          <!-- Progress Bar and Time Display -->
           <div class="progress-container">
+            <!-- Current Time of the Track -->
             <span id="current-time">0:00</span>
+
+            <!-- Progress Bar for Track -->
             <input type="range" id="progress" min="0" max="100" value="0" />
+
+            <!-- Duration of the Track -->
             <span id="duration">0:00</span>
           </div>
         </div>
 
+        <!-- Song List Section -->
         <div class="song-list-container">
+          <!-- Button to Toggle Song List Visibility -->
           <button id="song-list-toggle" class="toggle-button">
-            🔽 Song List
+            <!-- Icon for the Toggle Button -->
+            <img
+              src="https://img.icons8.com/?size=100&id=40021&format=png&color=FFFFFF"
+              width="24"
+              height="24"
+            />
+            <!-- Label for the Toggle Button -->
+            <span>Toggle Song List</span>
           </button>
+
+          <!-- Song List Display Section -->
           <div class="song-list">
+            <!-- Song 1 -->
             <div class="song" data-index="0">
               <img src="cafe.png" alt="Song 1" />
               <p>Haze</p>
             </div>
+
+            <!-- Song 2 -->
             <div class="song" data-index="1">
-              <img src="forest.png" alt="Song 2" />
-              <p>Mystical</p>
+              <img src="enchanted.png" alt="Song 2" />
+              <p>Enchanted</p>
             </div>
+
+            <!-- Song 3 -->
             <div class="song" data-index="2">
               <img src="fade.png" alt="Song 3" />
               <p>Fading</p>
             </div>
+
+            <!-- Song 4 -->
             <div class="song" data-index="3">
-              <img src="placeholder4.jpg" alt="Song 4" />
-              <p>Song Four</p>
+              <img src="mystical.png" alt="Song 4" />
+              <p>Mystical</p>
             </div>
           </div>
         </div>

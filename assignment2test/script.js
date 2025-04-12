@@ -5,9 +5,9 @@ const songs = [
     cover: "cafe.png",
   },
   {
-    name: "Ascension",
-    src: "forest.wav",
-    cover: "forest.png",
+    name: "Enchanted",
+    src: "enchanted.wav",
+    cover: "enchanted.png",
   },
   {
     name: "Fading",
@@ -15,9 +15,9 @@ const songs = [
     cover: "fade.png",
   },
   {
-    name: "Song Four",
-    src: "song4.mp3",
-    cover: "placeholder4.jpg",
+    name: "Mystical",
+    src: "mystical.wav",
+    cover: "mystical.png",
   },
 ];
 
@@ -48,13 +48,15 @@ function loadSong(index) {
 function playSong() {
   audio.play();
   isPlaying = true;
-  playBtn.textContent = "⏸️";
+  playBtn.querySelector("img").src =
+    "https://img.icons8.com/?size=100&id=403&format=png&color=FFFFFF"; // Pause icon
 }
 
 function pauseSong() {
   audio.pause();
   isPlaying = false;
-  playBtn.textContent = "▶️";
+  playBtn.querySelector("img").src =
+    "https://img.icons8.com/?size=100&id=398&format=png&color=FFFFFF"; // Play icon
 }
 
 playBtn.addEventListener("click", () => {
@@ -79,7 +81,9 @@ document.getElementById("next").addEventListener("click", () => {
 
 muteBtn.addEventListener("click", () => {
   audio.muted = !audio.muted;
-  muteBtn.textContent = audio.muted ? "🔇" : "🔊";
+  muteBtn.querySelector("img").src = audio.muted
+    ? "https://img.icons8.com/?size=100&id=643&format=png&color=FFFFFF" // Muted icon
+    : "https://img.icons8.com/?size=100&id=LRLIxP2TYbTN&format=png&color=FFFFFF"; // Unmuted icon
 });
 
 volumeSlider.addEventListener("input", (e) => {
@@ -125,4 +129,27 @@ const songList = document.querySelector(".song-list");
 
 toggleBtn.addEventListener("click", () => {
   songList.classList.toggle("active");
+});
+
+const replayBtn = document.getElementById("replay");
+let isLooping = false;
+
+replayBtn.addEventListener("click", () => {
+  isLooping = !isLooping;
+  audio.loop = isLooping;
+
+  // Change replay icon based on state
+  replayBtn.querySelector("img").src = isLooping
+    ? "https://img.icons8.com/?size=100&id=59831&format=png&color=FFFFFF" // Green icon when loop is on
+    : "https://img.icons8.com/?size=100&id=91644&format=png&color=FFFFFF"; // White icon when off
+});
+
+// If you also want to handle when a song ends (if not looping)
+audio.addEventListener("ended", () => {
+  if (!isLooping) {
+    // Go to next song or stop
+    currentSong = (currentSong + 1) % songs.length;
+    loadSong(currentSong);
+    playSong();
+  }
 });

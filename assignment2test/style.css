@@ -1,7 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
 body {
   margin: 0;
   font-family: "Exo 2", sans-serif;
-  background: #111;
+  background: url("backgroundnebula.png") no-repeat center center fixed;
+  background-size: cover;
   color: #fff;
   display: flex;
   justify-content: center;
@@ -28,13 +32,19 @@ header {
 }
 
 header h1 {
-  font-family: "Patrick Hand", cursive;
+  font-family: "Poppins";
   font-size: 3rem;
   margin: 0;
 }
 
+h2 {
+  font-family: "Poppins";
+  font-size: 2.5rem;
+  margin: 10px 0;
+}
+
 #song-title {
-  font-family: "Shadows Into Light", cursive;
+  font-family: "Poppins", cursive;
   font-size: 1.3rem;
   margin: 5px 0 10px 0;
 }
@@ -104,12 +114,13 @@ header h1 {
   color: #fff;
   border: none;
   padding: 10px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   cursor: pointer;
   display: block;
   width: 200px;
   text-align: left;
   border-radius: 10px;
+  font-family: "Poppins";
 }
 
 .song-list {
@@ -147,7 +158,18 @@ header h1 {
 }
 
 .song p {
-  font-family: "Shadows Into Light", cursive;
+  font-family: "Dancing Script", cursive;
   font-size: 1.1rem;
   margin: 0;
+}
+
+.player {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
 }
