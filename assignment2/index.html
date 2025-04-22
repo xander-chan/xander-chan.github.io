@@ -3,39 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Page Title -->
     <title>Serenitunes Music Player</title>
+
+    <!-- External CSS file for styling -->
     <link rel="stylesheet" href="style.css" />
+
+    <!-- Google Fonts used in CSS -->
     <link
       href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500&family=Patrick+Hand&family=Shadows+Into+Light&display=swap"
       rel="stylesheet"
     />
+
+    <!-- External JavaScript file for functionality -->
     <script src="script.js" defer></script>
   </head>
+
   <body>
-    <!-- Main Container for the Page Content -->
+    <!-- Main Container for the entire website layout, placing the content in the center -->
     <div class="container">
-      <!-- Header Section for the Music Player -->
+      <!-- Header Section: Displays app name and current song title -->
       <header>
-        <!-- Main Title of the Music Player -->
         <h1>Serenitunes</h1>
 
-        <!-- Song Title Displayed Under the Main Title -->
+        <!-- Song title updates dynamically from javascript -->
         <h2 id="song-title">Cafe</h2>
       </header>
 
-      <!-- Main Content Section of the Player -->
+      <!-- Main content area holding player and song list -->
       <div class="main-content">
-        <!-- Music Player Section -->
         <div class="player">
-          <!-- Album Cover Image -->
+          <!-- Album cover image, updated in script.js based on song -->
           <img id="cover" src="cafe.png" alt="Album Cover" />
 
-          <!-- Audio Element for Playing Music -->
+          <!-- The audio element where javascript can handle play, pause, track change -->
           <audio id="audio"></audio>
 
-          <!-- Controls Section for the Music Player -->
+          <!-- Playback controls styled in CSS, logic in script.js -->
           <div class="controls">
-            <!-- Replay Button with Icon -->
+            <!-- Replay current song so it repeats (some songs are also made to infinitely loop - musicfx) -->
             <button id="replay">
               <img
                 src="https://img.icons8.com/?size=100&id=91644&format=png&color=FFFFFF"
@@ -45,7 +52,7 @@
               />
             </button>
 
-            <!-- Previous Button with Icon -->
+            <!-- Play previous song -->
             <button id="prev">
               <img
                 src="https://img.icons8.com/?size=100&id=407&format=png&color=FFFFFF"
@@ -55,7 +62,7 @@
               />
             </button>
 
-            <!-- Play Button with Icon -->
+            <!-- Toggle play/pause -->
             <button id="play">
               <img
                 src="https://img.icons8.com/?size=100&id=398&format=png&color=FFFFFF"
@@ -65,7 +72,7 @@
               />
             </button>
 
-            <!-- Next Button with Icon -->
+            <!-- Play next track -->
             <button id="next">
               <img
                 src="https://img.icons8.com/?size=100&id=405&format=png&color=FFFFFF"
@@ -75,7 +82,7 @@
               />
             </button>
 
-            <!-- Mute Button with Icon -->
+            <!-- Mute/unmute audio -->
             <button id="mute">
               <img
                 src="https://img.icons8.com/?size=100&id=LRLIxP2TYbTN&format=png&color=FFFFFF"
@@ -85,7 +92,7 @@
               />
             </button>
 
-            <!-- Volume Control Slider -->
+            <!-- Volume slider (CSS styled, JavaScript controlled) -->
             <input
               type="range"
               id="volume"
@@ -96,54 +103,46 @@
             />
           </div>
 
-          <!-- Progress Bar and Time Display -->
+          <!-- Progress display, updated in real-time via script.js -->
           <div class="progress-container">
-            <!-- Current Time of the Track -->
+            <!-- Current time of audio -->
             <span id="current-time">0:00</span>
 
-            <!-- Progress Bar for Track -->
+            <!-- Interactive progress bar-->
             <input type="range" id="progress" min="0" max="100" value="0" />
-
-            <!-- Duration of the Track -->
             <span id="duration">0:00</span>
           </div>
         </div>
 
-        <!-- Song List Section -->
+        <!-- Song list panel with toggle button -->
         <div class="song-list-container">
-          <!-- Button to Toggle Song List Visibility -->
+          <!-- Button to show/hide song list -->
           <button id="song-list-toggle" class="toggle-button">
-            <!-- Icon for the Toggle Button -->
             <img
               src="https://img.icons8.com/?size=100&id=40021&format=png&color=FFFFFF"
               width="24"
               height="24"
             />
-            <!-- Label for the Toggle Button -->
             <span>Toggle Song List</span>
           </button>
 
-          <!-- Song List Display Section -->
+          <!-- List of songs, each clickable; CSS styles and JS links to audio -->
           <div class="song-list">
-            <!-- Song 1 -->
             <div class="song" data-index="0">
               <img src="cafe.png" alt="Song 1" />
               <p>Haze</p>
             </div>
 
-            <!-- Song 2 -->
             <div class="song" data-index="1">
               <img src="enchanted.png" alt="Song 2" />
               <p>Enchanted</p>
             </div>
 
-            <!-- Song 3 -->
             <div class="song" data-index="2">
               <img src="fade.png" alt="Song 3" />
               <p>Fading</p>
             </div>
 
-            <!-- Song 4 -->
             <div class="song" data-index="3">
               <img src="mystical.png" alt="Song 4" />
               <p>Mystical</p>
@@ -152,5 +151,15 @@
         </div>
       </div>
     </div>
+    <!-- 
+    My vision for this project was to design an aesthetically calming and visually appealing music player. 
+    It has been tailored specifically for studying and moments of focused relaxation. 
+
+    The player features four carefully curated tracks, each chosen to evoke a unique emotional tone while remaining easy on the ears. 
+    I chose a pixel art style for its nostalgic charm and the consistency it offered across the visual theme.
+
+    NOTE: Songs used in this player were generated using MusicFX and SunoAI, which is non-copyright.
+    Cover images were created with the help of ChatGPT and are completely original.
+    -->
   </body>
 </html>
