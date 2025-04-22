@@ -41,12 +41,12 @@ function playSong() {
   isPlaying = true;
 
   // When the song is playing, we want the user to have the option to pause it,
-  // so we switch the play button's icon to a "pause" symbol.
+  // so we switch the play button's icon to a pause symbol.
   playBtn.querySelector("img").src =
     "https://img.icons8.com/?size=100&id=403&format=png&color=FFFFFF";
 }
 
-// Pause the song and update the button to show a "play" icon
+// Pause the song and update the button to show a play icon
 function pauseSong() {
   audio.pause();
   isPlaying = false;
