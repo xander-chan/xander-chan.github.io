@@ -11,8 +11,8 @@ body {
   background-size: cover;
   color: #fff;
   display: flex;
+  /* Make sures all content is centered */
   justify-content: center;
-  align-items: center;
   min-height: 100vh;
   padding-top: 40px;
   box-sizing: border-box;
@@ -21,6 +21,7 @@ body {
 /* Main layout container, styled to center content and constrain max width */
 .container {
   display: flex;
+  /* Keeps everything in a single column */
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
@@ -77,6 +78,7 @@ h2 {
 /* Cover image for each song stylised */
 #cover {
   width: 100%;
+  /* Border radius curves the edges, makes it look smoother */
   border-radius: 10px;
   margin-bottom: 10px;
 }
