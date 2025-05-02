@@ -38,7 +38,7 @@ let currentSong = 0; // Index of the currently playing song
 let isPlaying = false; // Keeps track of whether audio is playing
 let isLooping = false; // Tracks if repeat mode is enabled
 
-// Load a song and update UI
+// Load a song and update UI to match everything, for example 'title.textContent' gets updated to the right song name.
 function loadSong(index) {
   const song = songs[index];
   audio.src = song.src;
