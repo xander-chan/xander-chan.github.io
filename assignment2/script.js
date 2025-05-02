@@ -1,9 +1,19 @@
-// Song data array - each object represents a song with its name, audio source, and cover image
+// Song data array - each object represents a song with its name, audio source, cover image and colour
 const songs = [
-  { name: "Haze", src: "cafe.wav", cover: "cafe.png" },
-  { name: "Enchanted", src: "enchanted.wav", cover: "enchanted.png" },
-  { name: "Fading", src: "fade.wav", cover: "fade.png" },
-  { name: "Mystical", src: "mystical.wav", cover: "mystical.png" },
+  { name: "Haze", src: "cafe.wav", cover: "cafe.png", color: "#A8C0D6" },
+  {
+    name: "Enchanted",
+    src: "enchanted.wav",
+    cover: "enchanted.png",
+    color: "#A8D5BA",
+  },
+  { name: "Fading", src: "fade.wav", cover: "fade.png", color: "#ffcb77" },
+  {
+    name: "Mystical",
+    src: "mystical.wav",
+    cover: "mystical.png",
+    color: "#e0b0ff",
+  },
 ];
 
 // Get references to all necessary HTML elements to then add functionality too
@@ -20,6 +30,9 @@ const songListToggle = document.getElementById("song-list-toggle");
 const songListContainer = document.querySelector(".song-list-container");
 const songList = document.querySelector(".song-list");
 const replayBtn = document.getElementById("replay");
+const song = {
+  primaryColor: "#1B263B",
+};
 
 let currentSong = 0; // Index of the currently playing song
 let isPlaying = false; // Keeps track of whether audio is playing
@@ -33,6 +46,10 @@ function loadSong(index) {
   title.textContent = song.name;
   progress.value = 0;
   currentTimeEl.textContent = "0:00";
+
+  // Updates the colour
+
+  document.documentElement.style.setProperty("--primary-color", song.color);
 }
 
 // Play the loaded song and update the play button to show a "pause" icon
@@ -44,6 +61,9 @@ function playSong() {
   // so we switch the play button's icon to a pause symbol.
   playBtn.querySelector("img").src =
     "https://img.icons8.com/?size=100&id=403&format=png&color=FFFFFF";
+
+  // Start flashing the song title
+  title.classList.add("flashing");
 }
 
 // Pause the song and update the button to show a play icon
@@ -53,6 +73,9 @@ function pauseSong() {
 
   playBtn.querySelector("img").src =
     "https://img.icons8.com/?size=100&id=398&format=png&color=FFFFFF"; // Play icon
+
+  // Stop flashing the song title
+  title.classList.remove("flashing");
 }
 
 // When the play button is clicked, either play or pause depending on the current state
@@ -100,14 +123,14 @@ audio.addEventListener("timeupdate", () => {
   durationEl.textContent = formatTime(audio.duration);
 });
 
-// Format raw seconds into mm:ss format for display, (got help on this but didn't really need it as none of my songs go above 1 minute)
+// Format raw seconds into mm:ss format for display, helpful when the song durations are less than a minute, did get help for this from different websites.
 function formatTime(sec) {
-  if (isNaN(sec)) return "0:00";
-  const minutes = Math.floor(sec / 60);
-  const seconds = Math.floor(sec % 60)
-    .toString()
+  if (isNaN(sec)) return "0:00"; // Return "0:00" if the input is not a valid number.
+  const minutes = Math.floor(sec / 60); // Calculate the minutes part.
+  const seconds = Math.floor(sec % 60) // Calculate the seconds part.
+    .toString() // Convert seconds to a string.
     .padStart(2, "0");
-  return `${minutes}:${seconds}`;
+  return `${minutes}:${seconds}`; // Return the formatted time in mm:ss format.
 }
 
 // When a song is clicked from the list, play that song

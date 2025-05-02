@@ -1,6 +1,7 @@
 /* Google Fonts for headers and content */
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Exo+2&display=swap");
 
 /* Base Styles for the body */
 body {
@@ -51,9 +52,10 @@ h2 {
   font-family: "Poppins", cursive;
   font-size: 1.3rem;
   margin: 5px 0 10px 0;
+  color: var(--primary-color);
 }
 
-/* Music player container with glass styling to appear as a layer on top of the background */
+/* Music player container with glass styling to appear as a layer on top of the background (glass morphism) - utilised https://css.glass/ */
 .player {
   background: rgba(255, 255, 255, 0.1);
   padding: 20px;
@@ -183,8 +185,26 @@ h2 {
   margin: 0;
 }
 
+/* Added a cool flashing effect that plays when the song starts and stops, this is to ensure the user knows what the song title is */
+.flashing {
+  animation: flash 1.5s infinite;
+}
+
+/* At 0 and 100% the title is fully visible and at 50% it's at 0.3, I experimented with other times but this was the best */
+@keyframes flash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
 /* 
    NOTE: This layout is made for full-page viewing on a MacBook screen.
   On smaller/bigger displays (as I tested this on my home desktop), the absolute-positioned song list
-  may overlap the player or move off-screen.
+  may overlap the player or move off-screen. 
+
+  Tried to make everything visually coherent and cohesive, nothing is hard to look at and each colours align with the set theme.
 */
