@@ -3,14 +3,14 @@ let currentLevel = 0;
 const totalLevels = 9;
 
 const levelPairs = [
-  ["😀", "😃"],
-  ["🐶", "🐱"],
   ["🍎", "🍏"],
+  ["🐶", "🐱"],
   ["🚗", "🚕"],
   ["🌺", "🌸"],
   ["🍨", "🍧"],
   ["🐉", "🐍"],
   ["🏝️", "🏖️"],
+  ["😀", "😃"],
   ["😈", "👿"],
 ];
 
@@ -212,3 +212,34 @@ function showEndScreen() {
   document.getElementById("gameContainer").style.display = "none";
   document.getElementById("endScreen").classList.remove("hidden");
 }
+
+const bgMusic = document.getElementById("bgMusic");
+const volumeSlider = document.getElementById("volumeSlider");
+const volumeIcon = document.getElementById("volumeIcon");
+
+function toggleVolumeSlider() {
+  const slider = document.getElementById("volume-slider-container");
+  slider.classList.toggle("show");
+}
+
+volumeSlider.addEventListener("input", (e) => {
+  const volume = parseFloat(e.target.value);
+  bgMusic.volume = volume;
+
+  // Change icon depending on volume
+  if (volume === 0) {
+    volumeIcon.textContent = "🔇";
+  } else if (volume < 0.5) {
+    volumeIcon.textContent = "🔉";
+  } else {
+    volumeIcon.textContent = "🔊";
+  }
+});
+
+// Sync icon on page load
+window.addEventListener("load", () => {
+  const initVolume = parseFloat(volumeSlider.value);
+  bgMusic.volume = initVolume;
+  volumeIcon.textContent =
+    initVolume === 0 ? "🔇" : initVolume < 0.5 ? "🔉" : "🔊";
+});

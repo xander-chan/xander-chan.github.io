@@ -3,33 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Frutiger Aero Desktop</title>
+    <title>Outlier Game</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="desktop">
       <div class="desktop-icons">
         <div class="icon" onclick="openGamePopup()" title="Launch Outlier">
-          <img
-            src="https://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Folders-OS-Games-alt-icon.png"
-            alt="Outlier Icon"
-          />
+          <img src="windowsgameicon.png" alt="Outlier Icon" />
           <span>Outlier</span>
         </div>
       </div>
     </div>
 
-    <div class="taskbar">
-      <div class="start-button">🪟 Start</div>
-      <div class="taskbar-right">
-        <span class="tray-icon">🔊</span>
-        <span class="tray-icon">💻</span>
-        <span class="clock" id="clock"></span>
-      </div>
-    </div>
-
-    <!-- GAME POPUP -->
-    <div class="popup-window" id="gameWindow" style="display: none">
+    <!-- Popup Game Window -->
+    <div class="popup-window" id="gameWindow">
       <div class="title-bar">
         <span>Outlier.exe</span>
         <div class="title-bar-buttons">
@@ -41,7 +29,7 @@
           <h1>Spot the Odd Emoji Out</h1>
           <div id="level-indicator">Level 1</div>
           <div class="emoji-grid" id="emojiGrid"></div>
-          <div id="feedback"></div>
+          <div class="tick" id="feedback"></div>
         </div>
 
         <div id="endScreen" class="end-screen hidden">
@@ -54,6 +42,45 @@
         </div>
       </div>
     </div>
+
+    <!-- Taskbar -->
+    <div class="taskbar">
+      <div class="start-button">
+        <img src="startbutton.png" class="start-icon" />
+        Start
+      </div>
+      <div class="taskbar-right">
+        <div
+          class="tray-icon volume-icon"
+          id="volumeIcon"
+          onclick="toggleVolumeSlider()"
+          title="Adjust Volume"
+        >
+          🔊
+        </div>
+
+        <!-- Volume Slider Popup -->
+        <div id="volume-slider-container">
+          <div class="arrow-down"></div>
+          <input
+            type="range"
+            id="volumeSlider"
+            min="0"
+            max="1"
+            step="0.01"
+            value="0.5"
+            orient="vertical"
+          />
+        </div>
+
+        <span class="clock" id="clock">--:--</span>
+      </div>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" autoplay loop>
+      <source src="background.mp3" type="audio/mpeg" />
+    </audio>
 
     <script src="script.js"></script>
   </body>
