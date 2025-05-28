@@ -4,52 +4,130 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Outlier Game</title>
+    <!-- Link to CSS for animation and styling -->
     <link rel="stylesheet" href="style.css" />
+    <!-- JavaScript controls game logic and UI interaction -->
+    <script src="script.js" defer></script>
   </head>
   <body>
+    <!-- Main desktop container simulating a Windows 7-like desktop environment -->
     <div class="desktop">
+      <!-- Container for the desktop icons -->
       <div class="desktop-icons">
-        <div class="icon" onclick="openGamePopup()" title="Launch Outlier">
-          <img src="windowsgameicon.png" alt="Outlier Icon" />
+        <!-- Functional game launch icon with click event to open the game popup on screen-->
+        <div
+          class="icon launch-icon"
+          onclick="openGamePopup()"
+          title="Launch Outlier"
+        >
+          <img src="outlier.png" alt="Outlier Icon" />
           <span>Outlier</span>
+        </div>
+
+        <!-- Non-functional placeholder icons to add atmosphere and keep the Windows 7 vibe -->
+        <!-- Grayscale filters on these indicate disabled/non-clickable status -->
+        <div class="icon" title="Placeholder App">
+          <img src="Internet Explorer 2006-2011.png" alt="Placeholder Icon" />
+          <span>Internet Explorer</span>
+        </div>
+
+        <div class="icon" title="Placeholder App">
+          <img
+            src="4K Video Downloader 2013-2017 .png"
+            alt="Placeholder Icon"
+          />
+          <span>4K Video Downloader</span>
+        </div>
+
+        <div class="icon" title="Placeholder App">
+          <img src="Roblox 2011-2015.png" alt="Placeholder Icon" />
+          <span>Roblox</span>
+        </div>
+
+        <div class="icon" title="Placeholder App">
+          <img src="Skype 2009-2012.ico" alt="Placeholder Icon" />
+          <span>Skype</span>
+        </div>
+
+        <div class="icon" title="Placeholder App">
+          <img src="Speccy.png" alt="Placeholder Icon" />
+          <span>Speccy</span>
+        </div>
+
+        <div class="icon" title="Placeholder App">
+          <img src="Firefox 2009-2013.ico" alt="Placeholder Icon" />
+          <span>Firefox</span>
+        </div>
+
+        <div class="icon" title="Placeholder App">
+          <img
+            src="Recycle_Bin_Windows_Vista_full.png"
+            alt="Placeholder Icon"
+          />
+          <span>Recycle Bin</span>
+        </div>
+
+        <div class="icon" title="Placeholder App">
+          <img src="uTorrent 2010-2013.ico" alt="Placeholder Icon" />
+          <span>uTorrent</span>
+        </div>
+
+        <div class="icon" title="Placeholder App">
+          <img src="WinRAR 1992-2018.ico" alt="Placeholder Icon" />
+          <span>WinRAR</span>
         </div>
       </div>
     </div>
 
-    <!-- Popup Game Window -->
+    <!-- Popup window for the actual Outlier game -->
     <div class="popup-window" id="gameWindow">
+      <!-- Custom title bar mimicking Windows 7 app windows -->
       <div class="title-bar">
         <span>Outlier.exe</span>
         <div class="title-bar-buttons">
+          <!-- Close button triggers function to close the popup -->
           <span onclick="closeGamePopup()">✕</span>
         </div>
       </div>
+
+      <!-- Main content area of the popup -->
       <div class="window-content">
+        <!-- Game container holding all game UI elements -->
         <div class="game-container" id="gameContainer">
           <h1>Spot the Odd Emoji Out</h1>
+          <!-- Displays current game level -->
           <div id="level-indicator">Level 1</div>
+          <!-- Grid where emojis are dynamically displayed for the game -->
           <div class="emoji-grid" id="emojiGrid"></div>
+          <!-- Tick mark for correct/incorrect answers -->
           <div class="tick" id="feedback"></div>
         </div>
 
+        <!-- End screen shown after beating the game -->
         <div id="endScreen" class="end-screen hidden">
           <h2>You Win!</h2>
+          <!-- Displays time taken to complete the game -->
           <p>Time taken: <span id="timeTaken"></span></p>
           <div class="end-buttons">
+            <!-- Button to restart the game -->
             <button onclick="restartGame()">🔄 Restart</button>
+            <!-- Button to quit and close the popup -->
             <button onclick="closeGamePopup()">❌ Quit</button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Taskbar -->
+    <!-- Taskbar simulating the classic Windows 7 taskbar -->
+    <!-- Styled with gradients and shadows for nostalgic effect -->
     <div class="taskbar">
       <div class="start-button">
-        <img src="startbutton.png" class="start-icon" />
-        Start
+        <img src="start.png" class="start-icon" />
       </div>
+
+      <!-- Right side of taskbar with system icons and clock -->
       <div class="taskbar-right">
+        <!-- Volume icon toggles the volume slider popup -->
         <div
           class="tray-icon volume-icon"
           id="volumeIcon"
@@ -59,9 +137,10 @@
           🔊
         </div>
 
-        <!-- Volume Slider Popup -->
+        <!-- Volume slider popup container -->
         <div id="volume-slider-container">
           <div class="arrow-down"></div>
+          <!-- Volume control, taken from previous project -->
           <input
             type="range"
             id="volumeSlider"
@@ -73,15 +152,43 @@
           />
         </div>
 
+        <!-- Clock showing current time -->
         <span class="clock" id="clock">--:--</span>
       </div>
     </div>
 
-    <!-- Background Music -->
-    <audio id="bgMusic" autoplay loop>
+    <!-- Audio elements for background music and game sounds, the game sounds were sourced from the old Windows 7 OS sounds and reused in a different context (my game) -->
+    <!-- Background music loops continuously for immersion, also gives off a certain Frutiger Aero vibe which closely relates to nostalgia -->
+    <audio id="bgMusic" loop>
       <source src="background.mp3" type="audio/mpeg" />
     </audio>
+    <!-- Sound effects preloaded for instant playback -->
+    <audio id="correctSound" src="correct.mp3" preload="auto"></audio>
+    <audio id="incorrectSound" src="incorrect.mp3" preload="auto"></audio>
+    <audio id="winSound" src="winSound.mp3" preload="auto"></audio>
 
-    <script src="script.js"></script>
+    <!--
+      Context & Future Potential:
+
+      This project replicates a nostalgic Windows 7 desktop interface as a game launcher for 'Outlier', combining visual familiarity with interactive gameplay.
+
+      The game interaction centres around the click function, chosen for its immediate, tactile feedback. All feedback (correct or incorrect) is delivered through iconic Windows-style 
+      alert sounds offering clear instant responses that reinforce the user’s success or failure in real time.
+
+      Icons (commonly found Windows 7 Icons), the background (an old Windows 7 BG), the sounds (Windows 7 old OS sounds), reinforce the nostalgic vibe, while the popup game window 
+      which is common for games back then, provides a self-contained game experience.
+      This design choice was based on teacher and peer feedback but also since it feels like an 'old' game, aligning the theme with it will improve engagement.
+
+      Future improvements could include:
+      - Enabling the pop-up window to be moved which would be under 'drag', doesn't actually seem that hard but my website is focused on click anyway.
+      - Expanding the game logic with more levels
+      - Implementing user profiles and possibly tracking players’ reaction time, visual acuity, focus, and fatigue 
+        while comparing their results to age-related benchmarks, blending gameplay with meaningful self-assessment and cognitive health insights.
+
+      Sources
+      Emojis - https://emojipedia.org/
+      Icons - https://drive.google.com/drive/u/0/folders/1Y8pwAYNUyehk35AFISwszO2hPW30lILX 
+      Audio - https://youtu.be/brUzNct50Lw?si=7Vj3_yg8HEhwy8ab (Correct/Incorrect Sounds)
+    -->
   </body>
 </html>

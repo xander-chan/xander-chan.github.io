@@ -1,7 +1,9 @@
 let startTime = null;
 let currentLevel = 0;
-const totalLevels = 9;
+const totalLevels = 10;
 
+// Each level consists of a pair: the repeating emoji and the outlier
+// Emojis were selected for subtle but clear visual distinctions to challenge perception
 const levelPairs = [
   ["🍎", "🍏"],
   ["🐶", "🐱"],
@@ -10,10 +12,19 @@ const levelPairs = [
   ["🍨", "🍧"],
   ["🐉", "🐍"],
   ["🏝️", "🏖️"],
+  ["🌟", "⭐"],
   ["😀", "😃"],
   ["😈", "👿"],
 ];
 
+// Audio elements for feedback and atmosphere
+// Sound cues enhance usability by reinforcing success/failure
+const bgMusic = document.getElementById("bgMusic");
+const correctSound = document.getElementById("correctSound");
+const incorrectSound = document.getElementById("incorrectSound");
+
+// Updates the fake 'desktop clock' in the UI
+// Helps reinforce the Windows 2000s theme
 function updateClock() {
   const clock = document.getElementById("clock");
   const now = new Date();
@@ -25,6 +36,7 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
+// Open game popup: resets UI, initializes level, starts music
 function openGamePopup() {
   const popup = document.getElementById("gameWindow");
   popup.style.display = "block";
@@ -39,12 +51,14 @@ function openGamePopup() {
   currentLevel = 0;
   startTime = new Date();
   generateLevel();
+
+  bgMusic.play();
 }
 
+// Hide game window and clean up
 function closeGamePopup() {
   const popup = document.getElementById("gameWindow");
   popup.classList.remove("show");
-  // wait for animation to finish before hiding
   setTimeout(() => {
     popup.style.display = "none";
   }, 400);
@@ -53,6 +67,10 @@ function closeGamePopup() {
   const feedback = document.getElementById("feedback");
   if (feedback) feedback.className = "";
   stopMovingEmojis(); // stop any ongoing movement on close
+
+  // Pause background music and reset
+  bgMusic.pause();
+  bgMusic.currentTime = 0;
 }
 
 function restartGame() {
@@ -62,41 +80,52 @@ function restartGame() {
 let movingEmojis = [];
 let animationFrameId = null;
 
+// Builds each grid, a lot of my understanding came from https://scrimba.com/learn-javascript-c0v, https://www.w3schools.com/js/ and other youtube videos
 function generateLevel() {
   const grid = document.getElementById("emojiGrid");
   const feedback = document.getElementById("feedback");
-  if (feedback) feedback.className = ""; // reset feedback styles & hide
+  if (feedback) feedback.className = "";
   grid.innerHTML = "";
-  stopMovingEmojis(); // Clear previous movement
+  stopMovingEmojis();
 
-  const [sameEmoji, oddEmoji] = levelPairs[currentLevel];
-  const total = 108;
-  const oddIndex = Math.floor(Math.random() * total);
+  const [sameEmoji, oddEmoji] = levelPairs[currentLevel]; // Goes back to the 8th line of code and so on, to define which is the same and odd one outs
+  const total = 108; // Basically means 12 x 9 grid
+  const oddIndex = Math.floor(Math.random() * total); // Randomiser
 
-  // grid size for bounds calculation:
   const gridWidth = grid.clientWidth;
   const gridHeight = grid.clientHeight;
-  const cellSize = 40 + 6; // cell width + gap approx
+  const cellSize = 40 + 6;
 
   movingEmojis = [];
 
+  // Loop to create all 108 emoji cells
   for (let i = 0; i < total; i++) {
+    // Create a new div element to represent one emoji in the grid
     const cell = document.createElement("div");
+
     cell.className = "emoji-cell";
     cell.textContent = i === oddIndex ? oddEmoji : sameEmoji;
 
-    // Reset position for all cells first:
+    // Set default positioning for the emoji
     cell.style.position = "relative";
+
+    // Reset any previous movement
     cell.style.transform = "none";
     cell.style.transition = "transform 0.3s ease";
 
+    // If this is the odd emoji:
     if (i === oddIndex) {
+      // When clicked, show positive feedback (checkmark or sound),
+      // then advance to the next level (or finish if it's the last one)
       cell.onclick = () => {
-        showFeedback(true);
-        currentLevel++;
+        showFeedback(true); // correct click feedback
+        currentLevel++; // move to the next level
+
+        // If not the last level, generate the next one after 800ms
         if (currentLevel < totalLevels) {
           setTimeout(generateLevel, 800);
         } else {
+          // If last level was completed, show the end screen
           setTimeout(showEndScreen, 800);
         }
       };
@@ -128,6 +157,7 @@ function generateLevel() {
   }
 }
 
+// Visual and Audio Feedback from the CSS and HTML
 function showFeedback(isCorrect) {
   const feedback = document.getElementById("feedback");
   if (!feedback) return;
@@ -135,22 +165,30 @@ function showFeedback(isCorrect) {
   feedback.textContent = isCorrect ? "✔" : "✘";
   feedback.className = "show " + (isCorrect ? "correct" : "incorrect");
 
+  // Play sound effect
+  if (isCorrect) {
+    correctSound.currentTime = 0;
+    correctSound.play();
+  } else {
+    incorrectSound.currentTime = 0;
+    incorrectSound.play();
+  }
+
   // Hide after animation
   setTimeout(() => {
     feedback.className = "";
   }, 700);
 }
 
-// Create an object for each moving emoji to track its position & velocity
+// Final level interaction: moving emojis bounce within grid bounds, somewhat inspired by classic screen-saver behavior (e.g. DVD logo bounce)
+// and basic understanding from https://www.w3schools.com/graphics/game_movement.asp, https://developer.mozilla.org/en-US/docs/Web/CSS/transform.
 function createMovingEmoji(cell, gridWidth, gridHeight) {
   const cellSize = 40 + 6;
   // Start at a random position inside grid
   const x = Math.random() * (gridWidth - cellSize);
   const y = Math.random() * (gridHeight - cellSize);
 
-  // Random velocity - pixels per second
   const speed = 50; // Adjust for smoothness & consistent speed
-  // Random direction unit vector
   const angle = Math.random() * 2 * Math.PI;
   const vx = Math.cos(angle) * speed;
   const vy = Math.sin(angle) * speed;
@@ -171,7 +209,7 @@ function startMovingEmojis() {
       emoji.x += emoji.vx * delta;
       emoji.y += emoji.vy * delta;
 
-      // Bounce off edges of grid box
+      // Bounce off edges of grid box so it doesn't go out of frame
       if (emoji.x < 0) {
         emoji.x = 0;
         emoji.vx = -emoji.vx;
@@ -204,8 +242,19 @@ function stopMovingEmojis() {
   movingEmojis = [];
 }
 
+// After game completion
 function showEndScreen() {
   stopMovingEmojis();
+
+  // Stop background music
+  bgMusic.pause();
+  bgMusic.currentTime = 0;
+
+  // Play cheer sound
+  const winSound = document.getElementById("winSound");
+  winSound.play();
+  winSound.volume = volume * 0.5;
+
   const endTime = new Date();
   const duration = ((endTime - startTime) / 1000).toFixed(2);
   document.getElementById("timeTaken").textContent = `${duration} seconds`;
@@ -213,7 +262,6 @@ function showEndScreen() {
   document.getElementById("endScreen").classList.remove("hidden");
 }
 
-const bgMusic = document.getElementById("bgMusic");
 const volumeSlider = document.getElementById("volumeSlider");
 const volumeIcon = document.getElementById("volumeIcon");
 
@@ -224,7 +272,11 @@ function toggleVolumeSlider() {
 
 volumeSlider.addEventListener("input", (e) => {
   const volume = parseFloat(e.target.value);
-  bgMusic.volume = volume;
+
+  // Set different relative volumes
+  bgMusic.volume = volume * 0.3; // Softer background music
+  correctSound.volume = volume * 0.8; // Louder than music
+  incorrectSound.volume = volume * 0.8; // Louder than music
 
   // Change icon depending on volume
   if (volume === 0) {
@@ -236,10 +288,12 @@ volumeSlider.addEventListener("input", (e) => {
   }
 });
 
-// Sync icon on page load
 window.addEventListener("load", () => {
   const initVolume = parseFloat(volumeSlider.value);
-  bgMusic.volume = initVolume;
+  bgMusic.volume = initVolume * 0.3;
+  correctSound.volume = initVolume * 0.8;
+  incorrectSound.volume = initVolume * 0.8;
+
   volumeIcon.textContent =
     initVolume === 0 ? "🔇" : initVolume < 0.5 ? "🔉" : "🔊";
 });
