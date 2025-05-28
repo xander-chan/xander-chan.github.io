@@ -253,7 +253,6 @@ function showEndScreen() {
   // Play cheer sound
   const winSound = document.getElementById("winSound");
   winSound.play();
-  winSound.volume = volume * 0.5;
 
   const endTime = new Date();
   const duration = ((endTime - startTime) / 1000).toFixed(2);
@@ -293,6 +292,7 @@ window.addEventListener("load", () => {
   bgMusic.volume = initVolume * 0.3;
   correctSound.volume = initVolume * 0.8;
   incorrectSound.volume = initVolume * 0.8;
+  winSound.volume = initVolume * 0.3;
 
   volumeIcon.textContent =
     initVolume === 0 ? "🔇" : initVolume < 0.5 ? "🔉" : "🔊";
