@@ -13,13 +13,13 @@ body {
 /* The main desktop container fills the screen but stops short of the bottom taskbar height.
      This container mimics the main desktop workspace area typical in Windows OS. */
 .desktop {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 40px;
   padding: 20px;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 /* Container for desktop icons arranged in a vertical column, similar to how Windows 7 arranges desktop shortcuts and icons. */
