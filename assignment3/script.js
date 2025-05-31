@@ -297,3 +297,40 @@ window.addEventListener("load", () => {
   volumeIcon.textContent =
     initVolume === 0 ? "🔇" : initVolume < 0.5 ? "🔉" : "🔊";
 });
+
+// Make the popup draggable
+function makeDraggable(popupId, handleId) {
+  const popup = document.getElementById(popupId);
+  const handle = document.getElementById(handleId);
+
+  let offsetX = 0,
+    offsetY = 0,
+    isDragging = false;
+
+  handle.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    offsetX = e.clientX - popup.offsetLeft;
+    offsetY = e.clientY - popup.offsetTop;
+    popup.style.zIndex = 1000; // bring to front
+    document.body.style.userSelect = "none"; // prevent text selection
+  });
+
+  document.addEventListener("mouseup", () => {
+    isDragging = false;
+    document.body.style.userSelect = ""; // re-enable selection
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    popup.style.left = `${e.clientX - offsetX}px`;
+    popup.style.top = `${e.clientY - offsetY}px`;
+  });
+}
+
+// Call the function once DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
+  makeDraggable("gameWindow", "gameWindowHeader");
+});
+
+// I had to have a mix between getElementbyID and querySelector in some lines of code otherwise they wouldn't function
+//  I only used it in mostly the correct instances
