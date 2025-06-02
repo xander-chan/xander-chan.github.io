@@ -317,7 +317,7 @@ function makeDraggable(popupId, handleId) {
 
   document.addEventListener("mouseup", () => {
     isDragging = false;
-    document.body.style.userSelect = ""; // re-enable selection
+    document.body.style.userSelect = "";
   });
 
   document.addEventListener("mousemove", (e) => {
